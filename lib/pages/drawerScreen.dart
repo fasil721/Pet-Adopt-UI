@@ -26,7 +26,13 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   color: Colors.white,
                 ),
               ),
-              subtitle: Text("Active status"),
+              subtitle: Text(
+                "Active status",
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.white60,
+                ),
+              ),
             ),
             Container(
               margin: EdgeInsets.only(left: 15),
@@ -37,9 +43,19 @@ class _DrawerScreenState extends State<DrawerScreen> {
                           padding: EdgeInsets.only(bottom: 20),
                           child: Row(
                             children: [
-                              Icon(element["icon"]),
+                              Icon(
+                                element["icon"],
+                                color: Colors.white60,
+                                size: 25,
+                              ),
                               SizedBox(width: 10),
-                              Text(element["title"]),
+                              Text(
+                                element["title"],
+                                style: TextStyle(
+                                  color: Colors.white60,
+                                  fontSize: 18,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -52,19 +68,19 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 children: [
                   Icon(
                     Icons.settings,
-                    color: Colors.white,
+                    color: Colors.white60,
                   ),
                   SizedBox(width: 10),
                   Text(
                     "Settings",
                     style: TextStyle(
                       fontSize: 15,
-                      color: Colors.white,
+                      color: Colors.white60,
                     ),
                   ),
                   SizedBox(width: 10),
                   Container(
-                    color: Colors.white,
+                    color: Colors.white60,
                     height: 20,
                     width: 2,
                   ),
@@ -73,7 +89,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     "Log Out",
                     style: TextStyle(
                       fontSize: 15,
-                      color: Colors.white,
+                      color: Colors.white60,
                     ),
                   ),
                 ],

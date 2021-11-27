@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_design_1/style/configuration.dart';
 
 class CatView extends StatelessWidget {
-  const CatView({Key? key}) : super(key: key);
-
+  const CatView(
+      {Key? key, required this.image, required this.clr, required this.id})
+      : super(key: key);
+  final String image;
+  final clr;
+  final id;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -14,7 +18,7 @@ class CatView extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    color: Colors.blueGrey[300],
+                    color: clr,
                   ),
                 ),
                 Expanded(
@@ -48,9 +52,9 @@ class CatView extends StatelessWidget {
             Align(
               alignment: Alignment.topCenter,
               child: Hero(
-                tag: 1,
+                tag: id,
                 child: Image.asset(
-                  'images/pet-cat2.png',
+                  image,
                   height: 300,
                 ),
               ),

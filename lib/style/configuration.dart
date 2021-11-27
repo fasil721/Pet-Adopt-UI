@@ -6,9 +6,8 @@ Color primaryGreen = Color(0xff416d6d);
 List<BoxShadow> shadowList = [
   BoxShadow(
     color: Colors.grey,
-    spreadRadius: 10.0,
-    blurRadius: 20,
-    offset: Offset(0, 10),
+    blurRadius: 10,
+    offset: Offset(10, 10),
   )
 ];
 
@@ -17,12 +16,12 @@ List<Map> categories = [
   {'name': 'Dogs', 'iconPath': 'images/dog.png'},
   {'name': 'Bunnies', 'iconPath': 'images/rabbit.png'},
   {'name': 'Parrots', 'iconPath': 'images/parrot.png'},
-  {'name': 'Horses', 'iconPath': 'images/horse.png'}
+  {'name': 'Horses', 'iconPath': 'images/horse.png'},
 ];
 
 List<Map> drawerItems = [
   {'icon': FontAwesomeIcons.paw, 'title': 'Adoption'},
-  {'icon': Icons.mail, 'title': 'Donation'},
+  {'icon': Icons.mail_outline_rounded, 'title': 'Donation'},
   {'icon': FontAwesomeIcons.plus, 'title': 'Add pet'},
   {'icon': Icons.favorite, 'title': 'Favorites'},
   {'icon': Icons.mail, 'title': 'Messages'},

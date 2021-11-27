@@ -9,11 +9,120 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+//  with SingleTickerProviderStateMixin
+{
   double xOffset = 0;
   double yOffset = 0;
   double scaleFactor = 1;
   bool isDrawerOpen = false;
+  int _currentIndex = 0;
+
+  // TabController? _controller;
+  // @override
+  // void initState() {
+  //   _controller = TabController(length: categories.length, vsync: this);
+  //   super.initState();
+  // }
+
+  final screens = [
+    Tab(
+      child: ListView(
+        physics: BouncingScrollPhysics(),
+        children: [
+          Pets(
+            image: 'images/pet-cat1.png',
+            clr: Colors.blueGrey[200],
+            id: "1",
+          ),
+          Pets(
+            image: 'images/pet-cat2.png',
+            clr: Colors.orange[200],
+            id: "2",
+          ),
+          Pets(
+            image: 'images/pet-cat1.png',
+            clr: Colors.yellow[200],
+            id: "3",
+          ),
+        ],
+      ),
+    ),
+    Tab(
+      child: ListView(
+        physics: BouncingScrollPhysics(),
+        children: [
+          Pets(
+            image: 'images/dog-2.png',
+            clr: Colors.red[200],
+            id: "3",
+          ),
+          Pets(
+            image: 'images/dog-1.png',
+            clr: Colors.green[200],
+            id: "4",
+          ),
+        ],
+      ),
+    ),
+    Tab(
+      child: ListView(
+        physics: BouncingScrollPhysics(),
+        children: [
+          Pets(
+            image: 'images/dog-1.png',
+            clr: Colors.red[200],
+            id: "3",
+          ),
+          Pets(
+            image: 'images/dog-2.png',
+            clr: Colors.green[200],
+            id: "4",
+          ),
+        ],
+      ),
+    ),
+    Tab(
+      child: ListView(
+        physics: BouncingScrollPhysics(),
+        children: [
+          Pets(
+            image: 'images/pet-cat2.png',
+            clr: Colors.blueGrey[200],
+            id: "1",
+          ),
+          Pets(
+            image: 'images/pet-cat1.png',
+            clr: Colors.orange[200],
+            id: "2",
+          ),
+          Pets(
+            image: 'images/pet-cat2.png',
+            clr: Colors.yellow[200],
+            id: "3",
+          ),
+        ],
+      ),
+    ),
+    Tab(
+      child: ListView(
+        physics: BouncingScrollPhysics(),
+        children: [
+          Pets(
+            image: 'images/dog-1.png',
+            clr: Colors.red[200],
+            id: "3",
+          ),
+          Pets(
+            image: 'images/dog-2.png',
+            clr: Colors.green[200],
+            id: "4",
+          ),
+        ],
+      ),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             SizedBox(
-              height: 10,
+              height: isDrawerOpen ? 20 : 10,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
@@ -59,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             });
                           },
                           icon: Icon(
-                            Icons.menu,
+                            Icons.menu_rounded,
                           ),
                         ),
                   Column(
@@ -96,141 +205,141 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            Container(
-              height: 100,
-              margin: EdgeInsets.only(left: 20, right: 20),
-              child: ListView.separated(
-                physics: BouncingScrollPhysics(),
-                itemCount: categories.length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Image.asset(
-                          categories[index]["iconPath"],
-                          height: 50,
-                          width: 50,
-                          color: Colors.grey[700],
-                        ),
-                      ),
-                      Text(categories[index]['name'])
-                    ],
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                    width: 20,
-                  );
-                },
-              ),
-            ),
-            Expanded(
-              child: ListView(
-                physics: BouncingScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CatView(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      height: 240,
-                      margin: EdgeInsets.symmetric(horizontal: 20),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Stack(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.blueGrey[300],
-                                    borderRadius: BorderRadius.circular(20),
-                                    boxShadow: shadowList,
-                                  ),
-                                  margin: EdgeInsets.only(top: 50),
-                                ),
-                                Align(
-                                  child: Image.asset('images/pet-cat2.png'),
-                                )
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              margin: EdgeInsets.only(
-                                top: 65,
-                                bottom: 15,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(20),
-                                  bottomRight: Radius.circular(20),
-                                ),
-                                boxShadow: shadowList,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 240,
-                    margin: EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Stack(
+            DefaultTabController(
+              initialIndex: 0,
+              length: categories.length,
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 5),
+                child: TabBar(
+                  isScrollable: true,
+                  indicatorColor: Colors.blue,
+                  physics: BouncingScrollPhysics(),
+                  indicatorWeight: .001,
+                  onTap: (index) {
+                    setState(() {
+                      _currentIndex = index;
+                    });
+                  },
+                  tabs: [
+                    ...categories.map(
+                      (element) => Container(
+                        height: 96,
+                        child: Tab(
+                          child: Column(
                             children: [
                               Container(
+                                padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                  color: Colors.orange[200],
-                                  borderRadius: BorderRadius.circular(20),
+                                  color: categories[_currentIndex] == element
+                                      ? primaryGreen
+                                      : Colors.white,
                                   boxShadow: shadowList,
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                                margin: EdgeInsets.only(top: 50),
+                                child: Image.asset(
+                                  element["iconPath"],
+                                  height: 50,
+                                  width: 50,
+                                  color: categories[_currentIndex] == element
+                                      ? Colors.white
+                                      : Colors.grey[700],
+                                ),
                               ),
-                              Align(
-                                child: Hero(
-                                  tag: 1,
-                                  child: Image.asset('images/pet-cat1.png'),
+                              Container(
+                                margin: EdgeInsets.all(5),
+                                child: Text(
+                                  element['name'],
+                                  style: TextStyle(color: Colors.black),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
-                        Expanded(
-                          child: Container(
-                            margin: EdgeInsets.only(
-                              top: 65,
-                              bottom: 15,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(20),
-                                bottomRight: Radius.circular(20),
-                              ),
-                              boxShadow: shadowList,
-                            ),
-                          ),
-                        )
-                      ],
+                      ),
                     ),
+                  ],
+                ),
+              ),
+            ),
+            Flexible(
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                child: screens[_currentIndex],
+              ),
+              // TabBarView(
+              //   physics: BouncingScrollPhysics(),
+              //   controller: _controller,
+              //   children: screens,
+              // ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Pets extends StatelessWidget {
+  const Pets(
+      {Key? key, required this.image, required this.clr, required this.id})
+      : super(key: key);
+  final String image;
+  final clr;
+  final id;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CatView(
+              image: image,
+              clr: clr,
+              id: id,
+            ),
+          ),
+        );
+      },
+      child: Container(
+        height: 240,
+        margin: EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
+          children: [
+            Expanded(
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: clr,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: shadowList,
+                    ),
+                    margin: EdgeInsets.only(top: 50),
                   ),
+                  Align(
+                    child: Hero(
+                      tag: id,
+                      child: Image.asset(image),
+                    ),
+                  )
                 ],
+              ),
+            ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(
+                  top: 65,
+                  bottom: 15,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
+                  boxShadow: shadowList,
+                ),
               ),
             )
           ],
