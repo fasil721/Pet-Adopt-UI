@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_design_1/style/configuration.dart';
+import '/style/configuration.dart';
 
 class DrawerScreen extends StatefulWidget {
   const DrawerScreen({Key? key}) : super(key: key);
@@ -18,9 +18,15 @@ class _DrawerScreenState extends State<DrawerScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ListTile(
-              leading: CircleAvatar(),
+              leading: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  "images/a1.jpg",
+                  height: 40,
+                ),
+              ),
               title: Text(
-                "Muhammed Fasil",
+                "Mark zuckerberg",
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.white,
