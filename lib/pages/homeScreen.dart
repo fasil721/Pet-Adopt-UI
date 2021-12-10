@@ -122,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen>
           color: Colors.white,
           borderRadius: BorderRadius.circular(isDrawerOpen ? 30 : 0),
         ),
-        duration: Duration(milliseconds: 250),
+        duration: Duration(milliseconds: 200),
         child: Stack(
           children: [
             Container(
@@ -228,6 +228,7 @@ class _HomeScreenState extends State<HomeScreen>
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30),
                   topRight: Radius.circular(30),
+                  bottomLeft: Radius.circular(isDrawerOpen ? 30 : 0),
                 ),
                 color: Colors.grey[200],
               ),
